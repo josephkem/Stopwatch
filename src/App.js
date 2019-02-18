@@ -61,7 +61,6 @@ handleLap (){
     
     this.setState({laps: this.state.laps.concat([this.state.secondsElapsed])});
 
-
 }
 
 render(){
@@ -72,15 +71,20 @@ render(){
 
             <Container>
 
-                <Jumbotron>
+                <Jumbotron id="big">
 
                 <h1>
                     StopWatch
                 </h1>
 
                 </Jumbotron>
+            
+            
+            </Container>
 
-            <h1>{this.getMinutes()}:{this.getSeconds()}</h1>
+            <Container>
+
+                 <h2>{this.getMinutes()}:{this.getSeconds()}</h2>
             {(this.state.secondsElapsed === 0 || this.incrementer === this.state.lastClearedIncrementer)
 
                 ? <Button outline color="success"  size="lg"  onClick={this.handleStartClick}>Start</Button>
@@ -110,22 +114,16 @@ render(){
 
                    return <li><strong>{i+1}</strong> - {lap}</li>
 
-
                })}
            </ul>
-    
             
-
-
+            
             </Container>
 
-            
-        
-        
-        
-            
-            
-            
+                
+
+           
+
         </div>
     )
 }

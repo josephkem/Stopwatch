@@ -58,8 +58,10 @@ handleReset (){
 
 handleLap (){
 
-    
-    this.setState({laps: this.state.laps.concat([this.state.secondsElapsed])});
+    var sec = (this.getSeconds()).toString();
+    var min = (this.getMinutes()).toString();
+    var time = min.concat(" : ",sec);
+    this.setState({laps: this.state.laps.concat([time])});
 
 }
 
@@ -74,7 +76,7 @@ render(){
                 <Jumbotron id="big">
 
                 <h1>
-                    StopWatch
+                    Stopwatch
                 </h1>
 
                 </Jumbotron>

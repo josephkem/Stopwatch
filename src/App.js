@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import {Jumbotron,Row,Container,Button } from 'reactstrap';
+import {Jumbotron,Container,Button } from 'reactstrap';
 
 
 
@@ -10,26 +10,38 @@ constructor(props){
     this.state = {
 
         secondsElapsed: 0,
+        hoursElapsed:0,
         laps: []
 
     };
 
     this.getSeconds = this.getSeconds.bind(this);
     this.getMinutes = this.getMinutes.bind(this);
+    this.getHours = this.getHours.bind(this);
     this.handleStartClick = this.handleStartClick.bind(this); // SEE BIND
     this.handleStopClick = this.handleStopClick.bind(this);
     this.handleReset = this.handleReset.bind(this);
     this.handleLap = this.handleLap.bind(this);
-}
+} 
 
 getSeconds(){
+    if(this.state.secondsElapsed === 3600) {
+        this.setState({secondsElapsed:0})
+    }
 
     return ('0' + this.state.secondsElapsed % 60).slice(-2); //SEE SLICE 
 }
 
 getMinutes(){
 
-    return Math.floor('0' + this.state.secondsElapsed/60)
+     return Math.floor('00' + this.state.secondsElapsed/60)  
+}
+
+getHours() {
+    if(this.state.secondsElapsed === 3600) {
+        this.setState({hoursElapsed:(this.state.hoursElapsed + 1)})
+    }
+    return Math.floor('00'+ this.state.hoursElapsed)
 }
 
 
@@ -53,14 +65,16 @@ handleStopClick (){
 handleReset (){
 
     clearInterval(this.incrementer);
-    this.setState({secondsElapsed: 0}) 
+    this.setState({secondsElapsed: 0}) ;
+    this.setState({hoursElapsed:0});
 }
 
 handleLap (){
 
     var sec = (this.getSeconds()).toString();
     var min = (this.getMinutes()).toString();
-    var time = min.concat(" : ",sec);
+    var hr = (this.getHours()).toString();
+    var time = hr.concat(" : ",min," : ",sec);
     this.setState({laps: this.state.laps.concat([time])});
 
 }
@@ -84,7 +98,7 @@ render(){
             
             </Container>
 
-            <h2>{this.getMinutes()}:{this.getSeconds()}</h2>
+            <h2>{this.getHours()}:{this.getMinutes()}:{this.getSeconds()}</h2>
 
             <Container id="btns">
 
@@ -116,7 +130,7 @@ render(){
              <ul>
                {this.state.laps.map(function (lap, i){
 
-                   return <li><strong>{i+1}</strong> - {lap}</li>
+                   return <li>{lap}</li>
 
                })}
             </ul>

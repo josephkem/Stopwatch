@@ -84,9 +84,10 @@ render(){
             
             </Container>
 
-            <Container>
+            <h2>{this.getMinutes()}:{this.getSeconds()}</h2>
 
-                 <h2>{this.getMinutes()}:{this.getSeconds()}</h2>
+            <Container id="btns">
+
             {(this.state.secondsElapsed === 0 || this.incrementer === this.state.lastClearedIncrementer)
 
                 ? <Button outline color="success"  size="lg"  onClick={this.handleStartClick}>Start</Button>
@@ -108,16 +109,17 @@ render(){
 
                 : null 
            } 
+            </Container>
 
-              
-
-           <ul>
+            <Container id="lap">
+                
+             <ul>
                {this.state.laps.map(function (lap, i){
 
                    return <li><strong>{i+1}</strong> - {lap}</li>
 
                })}
-           </ul>
+            </ul>
             
             
             </Container>

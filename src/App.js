@@ -34,14 +34,14 @@ getSeconds(){
 
 getMinutes(){
 
-     return Math.floor('00' + this.state.secondsElapsed/60)  
+     return Math.floor(this.state.secondsElapsed/60);
 }
 
 getHours() {
     if(this.state.secondsElapsed === 3600) {
         this.setState({hoursElapsed:(this.state.hoursElapsed + 1)})
     }
-    return Math.floor('00'+ this.state.hoursElapsed)
+    return Math.floor(this.state.hoursElapsed);
 }
 
 
@@ -67,6 +67,7 @@ handleReset (){
     clearInterval(this.incrementer);
     this.setState({secondsElapsed: 0}) ;
     this.setState({hoursElapsed:0});
+ 
 }
 
 handleLap (){

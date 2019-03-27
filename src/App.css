@@ -1,18 +1,23 @@
 
+body {
+  background: linear-gradient(to bottom left, #2e2e2e 0%, #101010 85%);
+}
 h1{
   text-align: center;
   color:white;
 }
 
 h2 {
-  font-size: 140pt;
+  font-size: 130pt;
   text-align: center; 
-  color: black;
+  color: lawngreen;
 }
 
 #lap{
   display: block;
   text-align: center;
+  color: lawngreen;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 30pt;
 }
 

@@ -63,11 +63,11 @@ handleStopClick (){
 }
 
 handleReset (){
-    var elem = document.getElementById('laplist');
+   
     clearInterval(this.incrementer);
     this.setState({secondsElapsed: 0}) ;
     this.setState({hoursElapsed:0});
-    elem.parentNode.removeChild(elem);
+  
     
     
  
